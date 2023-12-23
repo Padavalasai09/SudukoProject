@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Suduko Solver</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+    <style>
+        
+      .clear{
+        margin-top: 30px;
+        
+      }
+        body{
+            background-color: darkgrey;
+            align-items: center;
+        }
+        .input {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+            padding: 0px;
+            border: 1px solid rgb(252, 170, 70);
+           background-color: beige;
+            
+        }
+        table{
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            margin: 0 auto;
+        }
+       
+        h1{
+            font-family:cursive
+        }
+        .blink
+        {
+                animation: blinker 1.5s linear infinite;
+                color: red;
+                font-family: cursive;
+            }
+        @keyframes blinker {
+            70% {
+                    opacity: 0;
+                }
+            }
+    </style>
+</head>
+<body>
+    
+   <center> <h1>Sudoku Solver</h1>  </center>
+        <marquee class="blink">
+            Note:By this website we can get the required solution for any valid suduko puzzle
+        </marquee>
+        <form action="/solve" method="post">
+        <table id="sudokuGrid">
+            <tr>
+            
+                <td>
+                    <input type="text" name="11" class="input">
+                </td>
+                <td>
+                    <input type="text" name="12" class="input">
+                </td>
+                <td>
+                    <input type="text"  name="13" class="input">
+                </td>
+                <td>
+                    <input type="text" name="14" class="input">
+                </td>
+                <td>
+                    <input type="text" name="15" class="input">
+                </td>
+                <td>
+                    <input type="text" name="16" class="input">
+                </td>
+                <td>
+                    <input type="text" name="17" class="input">
+                </td>
+                <td>
+                    <input type="text" name="18" class="input">
+                </td>
+                <td>
+                    <input type="text" name="19" class="input">
+                </td>
+            </tr>
+            <tr>
+            
+                <td>
+                    <input type="text" name="21" class="input">
+                </td>
+                <td>
+                    <input type="text" name="22" class="input">
+                </td>
+                <td>
+                    <input type="text" name="23" class="input">
+                </td>
+                <td>
+                    <input type="text" name="24" class="input">
+                </td>
+                <td>
+                    <input type="text" name="25" class="input">
+                </td>
+                <td>
+                    <input type="text" name="26" class="input">
+                </td>
+                <td>
+                    <input type="text" name="27" class="input">
+                </td>
+                <td>
+                    <input type="text" name="28" class="input">
+                </td>
+                <td>
+                    <input type="text" name="29" class="input">
+                </td>
+            </tr>
+            <tr>
+            
+                <td>
+                    <input type="text" name="31" class="input">
+                </td>
+                <td>
+                    <input type="text" name="32" class="input">
+                </td>
+                <td>
+                    <input type="text" name="33" class="input">
+                </td>
+                <td>
+                    <input type="text" name="34" class="input">
+                </td>
+                <td>
+                    <input type="text" name="35" class="input">
+                </td>
+                <td>
+                    <input type="text" name="36" class="input">
+                </td>
+                <td>
+                    <input type="text" name="37" class="input">
+                </td>
+                <td>
+                    <input type="text" name="38" class="input">
+                </td>
+                <td>
+                    <input type="text" name="39" class="input">
+                </td>
+            </tr>
+            <tr>
+            
+                <td>
+                    <input type="text" name="41" class="input">
+                </td>
+                <td>
+                    <input type="text" name="42" class="input">
+                </td>
+                <td>
+                    <input type="text" name="43" class="input">
+                </td>
+                <td>
+                    <input type="text" name="44" class="input">
+                </td>
+                <td>
+                    <input type="text" name="45" class="input">
+                </td>
+                <td>
+                    <input type="text" name="46" class="input">
+                </td>
+                <td>
+                    <input type="text" name="47" class="input">
+                </td>
+                <td>
+                    <input type="text" name="48" class="input">
+                </td>
+                <td>
+                    <input type="text" name="49" class="input">
+                </td>
+            </tr>
+            <tr>
+            
+                <td>
+                    <input type="text" name="51" class="input">
+                </td>
+                <td>
+                    <input type="text" name="52" class="input">
+                </td>
+                <td>
+                    <input type="text" name="53" class="input">
+                </td>
+                <td>
+                    <input type="text" name="54" class="input">
+                </td>
+                <td>
+                    <input type="text" name="55" class="input">
+                </td>
+                <td>
+                    <input type="text" name="56" class="input">
+                </td>
+                <td>
+                    <input type="text" name="57" class="input">
+                </td>
+                <td>
+                    <input type="text" name="58" class="input">
+                </td>
+                <td>
+                    <input type="text" name="59" class="input">
+                </td>
+            </tr>
+            <tr>
+            
+                <td>
+                    <input type="text" name="61" class="input">
+                </td>
+                <td>
+                    <input type="text" name="62" class="input">
+                </td>
+                <td>
+                    <input type="text" name="63" class="input">
+                </td>
+                <td>
+                    <input type="text" name="64" class="input">
+                </td>
+                <td>
+                    <input type="text" name="65" class="input">
+                </td>
+                <td>
+                    <input type="text" name="66" class="input">
+                </td>
+                <td>
+                    <input type="text" name="67" class="input">
+                </td>
+                <td>
+                    <input type="text" name="68" class="input">
+                </td>
+                <td>
+                    <input type="text" name="69" class="input">
+                </td>
+            </tr>
+            <tr>
+            
+                <td>
+                    <input type="text" name="71" class="input">
+                </td>
+                <td>
+                    <input type="text" name="72" class="input">
+                </td>
+                <td>
+                    <input type="text" name="73" class="input">
+                </td>
+                <td>
+                    <input type="text" name="74" class="input">
+                </td>
+                <td>
+                    <input type="text" name="75" class="input">
+                </td>
+                <td>
+                    <input type="text" name="76" class="input">
+                </td>
+                <td>
+                    <input type="text" name="77" class="input">
+                </td>
+                <td>
+                    <input type="text" name="78" class="input">
+                </td>
+                <td>
+                    <input type="text" name="79" class="input">
+                </td>
+            </tr>
+            <tr>
+            
+                <td>
+                    <input type="text" name="81" class="input">
+                </td>
+                <td>
+                    <input type="text" name="82" class="input">
+                </td>
+                <td>
+                    <input type="text" name="83" class="input">
+                </td>
+                <td>
+                    <input type="text" name="84" class="input">
+                </td>
+                <td>
+                    <input type="text" name="85" class="input">
+                </td>
+                <td>
+                    <input type="text" name="86" class="input">
+                </td>
+                <td>
+                    <input type="text" name="87" class="input">
+                </td>
+                <td>
+                    <input type="text" name="88" class="input">
+                </td>
+                <td>
+                    <input type="text" name="89" class="input">
+                </td>
+            </tr>
+            <tr>
+            
+                <td>
+                    <input type="text" name="91" class="input">
+                </td>
+                <td>
+                    <input type="text" name="92" class="input">
+                </td>
+                <td>
+                    <input type="text" name="93" class="input">
+                </td>
+                <td>
+                    <input type="text" name="94" class="input">
+                </td>
+                <td>
+                    <input type="text" name="95" class="input">
+                </td>
+                <td>
+                    <input type="text" name="96" class="input">
+                </td>
+                <td>
+                    <input type="text" name="97" class="input">
+                </td>
+                <td>
+                    <input type="text" name="98" class="input">
+                </td>
+                <td>
+                    <input type="text" name="99" class="input">
+                </td>
+            </tr>
+        </table><br><br>
+        
+            <center><button class="btn btn-success">SOLVE</button></center>
+</form>
+<center><button class="btn btn-danger clear" onclick="clearSudoku()">CLEAR</button></center>
+
+<script>
+    function clearSudoku() {
+      const table = document.getElementById('sudokuGrid');
+      const cells = table.querySelectorAll('input');
+      for (let i = 0; i < cells.length; i++) {
+        cells[i].value = '';
+      }
+    }
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
